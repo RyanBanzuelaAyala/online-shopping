@@ -9,10 +9,12 @@ $(function() {
 		case 'Contact Us':
 			$('#contact').addClass('active');
 			break;
-		case 'Home':
-			$('#home').addClass('active');
-			break;
+		case 'All Products':
+			$('#listProducts').addClass('active');
+			break;		
 		deafult:
+			$('#listProducts').addClass('active');
+			$('#a_'+menu).addClass('active');
 			break;
 			
 	} 
