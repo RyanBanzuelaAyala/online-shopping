@@ -26,24 +26,25 @@ public class HibernateConfig {
 	private final static String DATABASE_PASSWORD = "";
 	
 	
-	// datasource
 	@Bean
-	private DataSource getDataSource() {
+	public DataSource getDataSource() {
 		
-		BasicDataSource datasource = new BasicDataSource();
+		BasicDataSource dataSource = new BasicDataSource();
 		
-		datasource.setDriverClassName(DATABASE_DRIVER);
-		datasource.setUrl(DATABASE_URL);
-		datasource.setUsername(DATABASE_USERNAME);
-		datasource.setPassword(DATABASE_PASSWORD);
+		// Providing the database connection information
+		dataSource.setDriverClassName(DATABASE_DRIVER);
+		dataSource.setUrl(DATABASE_URL);
+		dataSource.setUsername(DATABASE_USERNAME);
+		dataSource.setPassword(DATABASE_PASSWORD);
+				
 		
-		return datasource;
+		return dataSource;
 		
 	}
 	
 	
 	@Bean
-	private SessionFactory getSessionFactory(DataSource datasource) {
+	public SessionFactory getSessionFactory(DataSource datasource) {
 			
 		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(datasource);
 		
@@ -58,23 +59,24 @@ public class HibernateConfig {
 
 	private Properties getHibernateProperties() {
 
-		Properties properties = new Properties();
+		Properties properties = new Properties();		
 		
-		properties.put("hibernate.dialect", DATABASE_DIALECT);
+		properties.put("hibernate.dialect", DATABASE_DIALECT);		
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.format_sql", "true");
-				
 		
-		return null;
+		//properties.put("hibernate.hbm2ddl.auto", "create");		
+		
+		return properties;
 	}
 	
 	
 	@Bean
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionfactory) {
 	
-		HibernateTransactionManager transctionManager = new HibernateTransactionManager(sessionfactory);
+		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionfactory);
 		
-		return transctionManager;
+		return transactionManager;
 		
 	}
 	

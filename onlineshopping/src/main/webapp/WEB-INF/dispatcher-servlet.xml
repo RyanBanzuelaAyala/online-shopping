@@ -13,8 +13,8 @@
    ">
       
    <context:component-scan base-package="net.dev.onlineshopping.controller" />
-   <context:component-scan base-package="net.dev.backendshopping.daoimpl" />
-
+   <context:component-scan base-package="net.dev.backendshopping" />
+   
    <bean id="viewResolver"
    		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
    		
