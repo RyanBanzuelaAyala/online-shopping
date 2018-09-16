@@ -1,3 +1,15 @@
+
+
+create table category (
+  id int auto_increment not null,
+  name varchar(50) not null,
+  description varchar(255) not null,
+  image_url varchar(50) not null,
+  is_active boolean not null,
+  primary key (id),
+  constraint unique index pk_category_id (id)
+) 
+
 CREATE TABLE category (
 	id IDENTITY,
 	name VARCHAR(50),
@@ -12,6 +24,19 @@ INSERT INTO category (name, description,image_url,is_active) VALUES ('Laptop', '
 INSERT INTO category (name, description,image_url,is_active) VALUES ('Television', 'This is description for Television category!', 'CAT_2.png', true);
 INSERT INTO category (name, description,image_url,is_active) VALUES ('Mobile', 'This is description for Mobile category!', 'CAT_3.png', true);
 
+
+create table user_detail (
+  id int auto_increment not null,
+  first_name varchar(50) not null,
+  last_name varchar(255) not null,
+  role varchar(50) not null,
+  enabled BOOLEAN not null,
+  password varchar(60) not null,
+  email varchar(100) not null,
+  contact_number varchar(15) not null,
+  primary key (id),
+  constraint unique index pk_user_id (id)
+) 
 
 CREATE TABLE user_detail (
 	id IDENTITY,
@@ -39,6 +64,26 @@ INSERT INTO user_detail
 (first_name, last_name, role, enabled, password, email, contact_number) 
 VALUES ('Khozema', 'Nullwala', 'USER', true, '$2a$06$4mvvyO0h7vnUiKV57IW3oudNEaKPpH1xVSdbie1k6Ni2jfjwwminq', 'kn@gmail.com', '7777777777');
 
+
+
+create table product (
+  id int auto_increment not null,
+  code VARCHAR(20) not null,
+  name VARCHAR(50) not null,
+  brand VARCHAR(50) not null,
+  description VARCHAR(255) not null,
+  unit_price DECIMAL(10,2) not null,
+  quantity INT not null,
+  is_active BOOLEAN not null,
+  category_id INT not null,
+  supplier_id INT not null,
+  purchases INT DEFAULT 0 not null,
+  views INT DEFAULT 0 not null,
+  primary key (id),
+  constraint unique index pk_product_id (id),
+  constraint fk_product_category_id FOREIGN KEY (category_id) REFERENCES category(id),
+  constraint fk_product_supplier_id FOREIGN KEY (supplier_id) REFERENCES user_detail(id)	
+) 
 
 
 CREATE TABLE product (

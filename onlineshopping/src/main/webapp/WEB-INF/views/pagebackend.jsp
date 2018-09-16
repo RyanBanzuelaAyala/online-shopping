@@ -21,7 +21,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Online Shopping - ${title}</title>
+    <title>Backend Shopping - ${title}</title>
     
     <script>
     	window.menu = '${title}';
@@ -84,8 +84,6 @@
 	
 	<!-- DataTable Bootstrap Script -->
 	<script src="${js}/dataTables.bootstrap.js"></script>
-	
-	<script src="${js}/bootbox.min.js"></script>
   </body>
 
 </html>

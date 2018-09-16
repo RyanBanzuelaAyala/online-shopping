@@ -11,7 +11,7 @@
 	<properties>
 		<javaee.version>7.0</javaee.version>
 		<spring.version>5.0.7.RELEASE</spring.version>
-		
+
 	</properties>
 
 	<dependencies>
@@ -22,7 +22,7 @@
 			<artifactId>shoppingbackend</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
+
 		<!-- JAVA EE -->
 		<dependency>
 			<groupId>javax</groupId>
@@ -31,7 +31,7 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- SPRING -->
+		<!-- SPRINGS -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -43,7 +43,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
+
 		<!-- JUNIT -->
 		<dependency>
 			<groupId>junit</groupId>
