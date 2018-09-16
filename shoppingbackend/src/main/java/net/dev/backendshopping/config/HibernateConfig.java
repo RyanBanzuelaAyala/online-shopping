@@ -25,6 +25,12 @@ public class HibernateConfig {
 	private final static String DATABASE_USERNAME = "sa";
 	private final static String DATABASE_PASSWORD = "";*/
 	
+	private final static String DATABASE_URL = "jdbc:mysql://188.121.44.182:3306/dnbjavaeedb";
+	private final static String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
+	private final static String DATABASE_DIALECT = "org.hibernate.dialect.MySQLDialect";
+	private final static String DATABASE_USERNAME = "javaqq";
+	private final static String DATABASE_PASSWORD = "qwe123QQ@@";
+	
 	/*private final static String DATABASE_URL = "jdbc:mysql://localhost:3306/dbx";
 	private final static String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
 	private final static String DATABASE_DIALECT = "org.hibernate.dialect.MySQLDialect";
