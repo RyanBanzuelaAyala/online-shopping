@@ -1,10 +1,13 @@
 package net.dev.backendshopping.dto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,11 +28,13 @@ public class User {
 	
 	@Column(name = "contact_number")
 	private String contactNumber;
+	
 	private String role;
 	
 	private String password;
-	private boolean enabled = true;
 	
+	private boolean enabled = true;
+			
 	public int getId() {
 		return id;
 	}
@@ -85,7 +90,18 @@ public class User {
 				+ ", contactNumber=" + contactNumber + ", role=" + role + ", password=" + password + ", enabled="
 				+ enabled + "]";
 	}
+		
+	//@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+	//@OneToOne(mappedBy = "user")
+	//@OneToOne
+	private Cart cart;
 	
+	public Cart getCart() {
+		return cart;
+	}
 	
-	
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 }

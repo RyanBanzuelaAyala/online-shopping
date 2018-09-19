@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import net.dev.backendshopping.dao.UserDAO;
+import net.dev.backendshopping.dto.Address;
+import net.dev.backendshopping.dto.Cart;
 import net.dev.backendshopping.dto.User;
 
 @Repository("userDAO")
@@ -77,6 +79,104 @@ public class UserDAOImpl implements UserDAO {
 
 		}
 		
+	}
+
+	@Override
+	public boolean addAddress(Address address) {
+		try {
+
+			sf.getCurrentSession().persist(address);
+			return true;
+
+		} catch (Exception ex) {
+
+			ex.printStackTrace();
+			return false;
+
+		}
+	}
+
+	@Override
+	public boolean updateCart(Cart cart) {
+		try {
+
+			sf.getCurrentSession().update(cart);
+			return true;
+
+		} catch (Exception ex) {
+
+			ex.printStackTrace();
+			return false;
+
+		}
+	}
+
+	@Override
+	public User getByEmail(String email) {
+		String selectQry =  "FROM User where email = :email";
+		
+		try {
+
+			return sf
+					.getCurrentSession()
+						.createQuery(selectQry, User.class)
+							.setParameter("email", email)
+								.getSingleResult();
+			
+
+		} catch (Exception ex) {
+
+			ex.printStackTrace();
+			return null;
+
+		}
+	
+	}
+
+	@Override
+	public Address getBillingAddress(User user) {
+		
+		String selectQry =  "FROM Address where user = :user and billing = :billing";
+		
+		try {
+
+			return sf
+					.getCurrentSession()
+						.createQuery(selectQry, Address.class)
+							.setParameter("user", user)
+							.setParameter("billing", true)
+								.getSingleResult();
+			
+
+		} catch (Exception ex) {
+
+			ex.printStackTrace();
+			return null;
+
+		}
+	}
+
+	@Override
+	public List<Address> listShippinhAddress(User user) {
+		
+		String selectQry =  "FROM Address where user = :user and shipping = :shipping";
+		
+		try {
+
+			return sf
+					.getCurrentSession()
+						.createQuery(selectQry, Address.class)
+							.setParameter("user", user)
+							.setParameter("shipping", true)
+								.getResultList();
+			
+
+		} catch (Exception ex) {
+
+			ex.printStackTrace();
+			return null;
+
+		}
 	}
 
 }

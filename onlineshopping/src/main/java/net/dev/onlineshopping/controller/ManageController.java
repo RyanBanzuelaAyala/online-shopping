@@ -57,6 +57,9 @@ public class ManageController {
 			if(operation.equals("product")) {
 				mv.addObject("message", "Product Added!");
 			}
+			else if(operation.equals("category")) {
+				mv.addObject("message", "Category Added!");
+			}
 		}
 		
 		return mv;
@@ -131,7 +134,18 @@ public class ManageController {
 		return "Product deleted successfully!";
 		
 	}
-					
+				
+	@RequestMapping(value = "/category", method=RequestMethod.POST)
+	public String managePostCategory(@ModelAttribute("category") Category mCategory, HttpServletRequest request) {
+				
+		mCategory.setImageURL("");
+		mCategory.setActive(true);
+	
+		categoryDAO.add(mCategory);		
+		
+		return "redirect:/manage/products?operation=category";
+	}
+	
 	@ModelAttribute("categories") 
 	public List<Category> modelCategories() {
 		return categoryDAO.list();

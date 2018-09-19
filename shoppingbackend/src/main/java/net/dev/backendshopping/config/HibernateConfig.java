@@ -48,9 +48,9 @@ public class HibernateConfig {
 		dataSource.setUrl(DATABASE_URL);
 		dataSource.setUsername(DATABASE_USERNAME);
 		dataSource.setPassword(DATABASE_PASSWORD);
-		dataSource.setMaxIdle(25);
+		/*dataSource.setMaxIdle(25);
 		dataSource.setMinIdle(5);
-		dataSource.setMaxWaitMillis(10000);
+		dataSource.setMaxWaitMillis(10000);*/
 									
 		return dataSource;
 		
@@ -79,17 +79,20 @@ public class HibernateConfig {
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.format_sql", "true");
 		
-		properties.put("hibernate.hbm2ddl.auto", "update");
-		properties.put("hibernate.auto_close_session", "true");
+		properties.put("hibernate.hbm2ddl.auto", "create");
 		
+		//properties.put("hibernate.hbm2ddl.auto", "update");
+		
+		//properties.put("hibernate.auto_close_session", "true");
+					
 		// c3po	
-		properties.put("hibernate.c3p0.acquire_increment", "1");
+		/*properties.put("hibernate.c3p0.acquire_increment", "1");
 		properties.put("hibernate.c3p0.idle_test_period", "3000");		
 		properties.put("hibernate.c3p0.max_size", "25");
 		properties.put("hibernate.c3p0.min_size", "10");
 		
 		properties.put("hibernate.c3p0.timeout", "1800");
-		properties.put("hibernate.c3p0.max_statement", "50");
+		properties.put("hibernate.c3p0.max_statement", "50");*/
 		
 		
 		return properties;
